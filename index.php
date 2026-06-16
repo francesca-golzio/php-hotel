@@ -82,7 +82,19 @@
             // get every key-value pair
             foreach ($hotel as $key => $value) {
               // print data inside cell (repeat for each $key)
-              echo "<td>$value</td>";
+              // IF $key is 'parking'
+              if ($key == "parking") {
+                if ($value == true) {
+                  // if 'true' print '🟢 yes'
+                  echo "<td>🟢 yes</td>";
+                  } else {
+                  // ELSE (if 'false') print '🔴 no'
+                  echo "<td>🔴 no</td>";
+                  }
+              } else {
+                  // ELSE
+                  echo "<td>$value</td>";
+              }
             }
             // close table row
             echo "</tr>";
