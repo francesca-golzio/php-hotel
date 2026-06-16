@@ -60,28 +60,44 @@
   
   <main>
 
+    <div class="table-responsive">
+      <table class="table table-primary">
+        <thead>
+          <tr>
+            <th scope="col">Hotel</th>
+            <th scope="col">Description</th>
+            <th scope="col">Parking</th>
+            <th scope="col">Vote</th>
+            <th scope="col">Distance to Center</th>
+          </tr>
+        </thead>
 
+        <tbody>
+        <?php
+        // Cycle inside the hotels array
+          // for each hotel of the hotels list
+          foreach ($hotels as $hotel) {
+            // open table row
+            echo "<tr>";
+            // get every key-value pair
+            foreach ($hotel as $key => $value) {
+              // print data inside cell (repeat for each $key)
+              echo "<td>$value</td>";
+            }
+            // close table row
+            echo "</tr>";
+          }
+
+
+        ?>
+        
+        </tbody>
+
+
+
+      </table>
+    </div>
     
-
-
-
-
-    <?php
-
-      // Cycle inside the hotels array
-      // for each hotel of the hotels list
-      foreach ($hotels as $hotel) {
-        // get every key-value pair
-        foreach ($hotel as $key => $value) {
-          // print data
-          echo "$key - $value<br>";          
-        }
-        // space hotel's data from each other
-        echo "<br>";
-      }
-    
-    ?>
-
     <!-- Import Bootstrap -->
     <script 
     src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
