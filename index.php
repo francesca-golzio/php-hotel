@@ -86,11 +86,11 @@
               // IF $key is 'parking'
               if ($key == "parking") {
                 if ($value == true) {
-                  // if 'true' print '🟢 yes'
-                  echo "<td>🟢 yes</td>";
+                  // if 'true' print
+                  echo "<td><i class='bi bi-check2-circle'></i> yes</td>";
                   } else {
-                  // ELSE (if 'false') print '🔴 no'
-                  echo "<td>🔴 no</td>";
+                  // ELSE (if 'false') print
+                  echo "<td><i class='bi bi-x-circle'></i> no</td>";
                   }
               } else if ($key == "vote") {
                   echo "<td>";
