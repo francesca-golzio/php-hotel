@@ -48,8 +48,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Import Bootstrap -->
+  <!-- Import Bootstrap CSS and Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <title>🏨 PHP Hotel</title>
 </head>
 <body>
@@ -91,6 +92,12 @@
                   // ELSE (if 'false') print '🔴 no'
                   echo "<td>🔴 no</td>";
                   }
+              } else if ($key == "vote") {
+                  echo "<td>";
+                  for($s = $value; $s > 0; $s--) {
+                    echo "<i class='bi bi-star'> </>";
+                  }
+                  echo "</td>";
               } else {
                   // ELSE
                   echo "<td>$value</td>";
