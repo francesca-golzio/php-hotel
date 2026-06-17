@@ -83,26 +83,33 @@
             // get every key-value pair
             foreach ($hotel as $key => $value) {
               // print data inside cell (repeat for each $key)
-              // IF $key is 'parking'
-              if ($key == "parking") {
+
+              // IF $key is PARKING
+              if ($key == "name") {
+                echo "<td><h4>$value</h4></td>";
+              // IF $key is PARKING
+              } elseif ($key == "parking") {
                 if ($value == true) {
                   // if 'true' print
                   echo "<td><i class='bi bi-check2-circle'></i> yes</td>";
                   } else {
-                  // ELSE (if 'false') print
-                  echo "<td><i class='bi bi-x-circle'></i> no</td>";
+                    // ELSE (if 'false') print
+                    echo "<td><i class='bi bi-x-circle'></i> no</td>";
                   }
-              } else if ($key == "vote") {
-                  echo "<td>";
-                  for($s = $value; $s > 0; $s--) {
-                    echo "<i class='bi bi-star'> </>";
-                  }
-                  echo "</td>";
-              } else if ($key == "distance_to_center") {
-                  echo "<td>$value km</td>";
+              // IF $key is VOTE
+              } elseif ($key == "vote") {
+                echo "<td>";
+                for($s = $value; $s > 0; $s--) {
+                  echo "<i class='bi bi-star'> </>";
+                }
+                echo "</td>";
+              // IF $key is DISTANCE_TO_CENTER
+              } elseif ($key == "distance_to_center") {
+                echo "<td>$value km</td>";
+              // every OTHER case
               } else {
-                  // ELSE
-                  echo "<td>$value</td>";
+                // ELSE
+                echo "<td>$value</td>";
               }
             }
             // close table row
