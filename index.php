@@ -98,6 +98,8 @@
                     echo "<i class='bi bi-star'> </>";
                   }
                   echo "</td>";
+              } else if ($key == "distance_to_center") {
+                  echo "<td>$value km</td>";
               } else {
                   // ELSE
                   echo "<td>$value</td>";
