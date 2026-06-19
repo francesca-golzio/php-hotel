@@ -53,77 +53,131 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <title>🏨 PHP Hotel</title>
 </head>
+
+<style>
+
+  /* Import Google Fonts */
+  @font-face {
+    font-family: 'Victor Mono Variable';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 100 700;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/victor-mono:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+  }
+
+
+  /* Commons */
+  body {
+    font-family: 'Victor Mono Variable', monospace;
+    font-size: 18px;
+    background-image: url('./src/img/hf-sea.svg');
+    background-size: cover;
+  }
+
+
+  /* Header */
+  header {
+    background-color: #15274e;
+    color: #c9eefb;
+    padding: 20px 25px;
+    margin-bottom: 30px;
+    opacity: 0.95;
+  }
+
+
+  /* Main */
+
+  /* Table */
+
+  .table_container {
+    max-width: 1048px;
+    padding: 10px;
+    margin: 0 auto;
+  }
+
+  table {
+    opacity: 0.95;
+  }
+
+</style>
+
 <body>
   
   <header>
-    <h1>🏨 PHP Hotel</h1>
+    <div class="header_container">
+      <h1>🏨 PHP Hotel</h1>
+      
+    </div>
   </header>
   
   <main>
 
-    <div class="table-responsive">
-      <table class="table table-primary">
-        <thead>
-          <tr>
-            <th scope="col">Hotel</th>
-            <th scope="col">Description</th>
-            <th scope="col">Parking</th>
-            <th scope="col">Vote</th>
-            <th scope="col">Distance to Center</th>
-          </tr>
-        </thead>
+    <div class="table_container">
+      <div class="table-responsive ">
+        <table class="table table-info table-striped">
 
-        <tbody>
-        <?php
-        // Cycle inside the hotels array
-          // for each hotel of the hotels list
-          foreach ($hotels as $hotel) {
-            // open table row
-            echo "<tr>";
-            // get every key-value pair
-            foreach ($hotel as $key => $value) {
-              // print data inside cell (repeat for each $key)
+          <thead>
+            <tr class="text-uppercase">
+              <th scope="col">Hotel</th>
+              <th scope="col">Description</th>
+              <th scope="col">Parking</th>
+              <th scope="col">Vote</th>
+              <th scope="col">Distance to Center</th>
+            </tr>
+          </thead>
 
-              // IF $key is PARKING
-              if ($key == "name") {
-                echo "<td><h4>$value</h4></td>";
-              // IF $key is PARKING
-              } elseif ($key == "parking") {
-                if ($value == true) {
-                  // if 'true' print
-                  echo "<td><i class='bi bi-check2-circle'></i> yes</td>";
-                  } else {
-                    // ELSE (if 'false') print
-                    echo "<td><i class='bi bi-x-circle'></i> no</td>";
+          <tbody>
+          <?php
+          // Cycle inside the hotels array
+            // for each hotel of the hotels list
+            foreach ($hotels as $hotel) {
+              // open table row
+              echo "<tr>";
+              // get every key-value pair
+              foreach ($hotel as $key => $value) {
+                // print data inside cell (repeat for each $key)
+                // IF $key is PARKING
+                if ($key == "name") {
+                  echo "<td class='fw-bold'>$value</td>";
+                // IF $key is PARKING
+                } elseif ($key == "description") {
+                  echo "<td class='fst-italic text-truncate'>$value</td>";
+                // IF $key is PARKING
+                } elseif ($key == "parking") {
+                  if ($value == true) {
+                    // if 'true' print
+                    echo "<td><i class='bi bi-check2-circle'></i> yes</td>";
+                    } else {
+                      // ELSE (if 'false') print
+                      echo "<td><i class='bi bi-x-circle'></i> no</td>";
+                    }
+                // IF $key is VOTE
+                } elseif ($key == "vote") {
+                  echo "<td>";
+                  for($s = $value; $s > 0; $s--) {
+                    echo "<i class='bi bi-star'> </>";
                   }
-              // IF $key is VOTE
-              } elseif ($key == "vote") {
-                echo "<td>";
-                for($s = $value; $s > 0; $s--) {
-                  echo "<i class='bi bi-star'> </>";
+                  echo "</td>";
+                // IF $key is DISTANCE_TO_CENTER
+                } elseif ($key == "distance_to_center") {
+                  echo "<td>$value km</td>";
+                // every OTHER case
+                } else {
+                  // ELSE
+                  echo "<td>$value</td>";
                 }
-                echo "</td>";
-              // IF $key is DISTANCE_TO_CENTER
-              } elseif ($key == "distance_to_center") {
-                echo "<td>$value km</td>";
-              // every OTHER case
-              } else {
-                // ELSE
-                echo "<td>$value</td>";
               }
+              // close table row
+              echo "</tr>";
             }
-            // close table row
-            echo "</tr>";
-          }
 
 
-        ?>
-        
-        </tbody>
+          ?>        
+          </tbody>
 
-
-
-      </table>
+        </table>
+      </div>
     </div>
     
     <!-- Import Bootstrap -->
