@@ -168,7 +168,7 @@ require './hotels.php';
               // get every key-value pair
               foreach ($hotel as $key => $value) {
                 // print data inside cell (repeat for each $key)
-                // IF $key is PARKING
+                // IF $key is NAME
                 if ($key == "name") {
                   echo "<td class='fw-bold'>$value</td>";
                 // IF $key is PARKING
