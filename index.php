@@ -51,72 +51,13 @@ require './hotels.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Import custom CSS -->
+  <link rel="stylesheet" href="./src/css/style.css">
   <!-- Import Bootstrap CSS and Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <title>🏨 PHP Hotel</title>
 </head>
-
-<style>
-
-  /* Import Google Fonts */
-  @font-face {
-    font-family: 'Victor Mono Variable';
-    font-style: normal;
-    font-display: swap;
-    font-weight: 100 700;
-    src: url(https://cdn.jsdelivr.net/fontsource/fonts/victor-mono:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
-    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-  }
-
-
-  /* Commons */
-  body {
-    font-family: 'Victor Mono Variable', monospace;
-    font-size: 16px;
-    background-image: url('./src/img/hf-sea.svg');
-    background-size: cover;
-  }
-
-
-  /* Header */
-  header {
-    background-color: #15274e;
-    color: #c9eefb;
-    padding: 20px 25px;
-    margin-bottom: 30px;
-    opacity: 0.95;
-  }
-  
-  
-  /* Main */
-  
-  /* Filtering Form */
-  
-  .form_container {
-    color: #c9eefb;
-    background-color: #15274e;
-    opacity: 0.95;
-    padding: 1rem;
-    border-radius: 30px;
-    margin: 0 auto;
-
-  }
-
-
-  /* Table */
-
-  .table_container {
-    max-width: 1048px;
-    padding: 0.8rem;
-    margin: 0 auto;
-  }
-
-  table {
-    opacity: 0.95;
-  }
-
-</style>
 
 <body>
   
