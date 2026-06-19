@@ -39,7 +39,7 @@
             'distance_to_center' => 50
         ],
 
-    ];
+    ]; */
 
 ?>
 
@@ -70,7 +70,7 @@
   /* Commons */
   body {
     font-family: 'Victor Mono Variable', monospace;
-    font-size: 18px;
+    font-size: 16px;
     background-image: url('./src/img/hf-sea.svg');
     background-size: cover;
   }
@@ -84,15 +84,28 @@
     margin-bottom: 30px;
     opacity: 0.95;
   }
-
-
+  
+  
   /* Main */
+  
+  /* Filtering Form */
+  
+  .form_container {
+    color: #c9eefb;
+    background-color: #15274e;
+    opacity: 0.95;
+    padding: 1rem;
+    border-radius: 30px;
+    margin: 0 auto;
+
+  }
+
 
   /* Table */
 
   .table_container {
     max-width: 1048px;
-    padding: 10px;
+    padding: 0.8rem;
     margin: 0 auto;
   }
 
@@ -113,7 +126,22 @@
   
   <main>
 
-    <div class="table_container">
+    <!-- Filtering Form -->
+     <div class="container form_container">
+      <form action="./hotels+parking.php" method="GET">
+      
+        <input type="checkbox" name="parking">
+        <label for="parking">parking</label>
+
+        <button type="submit">
+          FILTRA
+        </button>
+
+      </form>
+    </div>
+    
+    <!-- Hotels table -->
+    <div class="container table_container">
       <div class="table-responsive ">
         <table class="table table-info table-striped">
 
