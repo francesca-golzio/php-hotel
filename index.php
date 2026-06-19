@@ -1,7 +1,10 @@
 <?php
-// Store variables
 
-    $hotels = [
+// Store variables
+require './hotels.php';
+
+// SPOSTATO
+/*     $hotels = [
 
         [
             'name' => 'Hotel Belvedere',
@@ -32,8 +35,8 @@
             'distance_to_center' => 5.5
         ],
         [
-            'name' => 'Hotel Milano',
             'description' => 'Hotel Milano Descrizione',
+            'name' => 'Hotel Milano',
             'parking' => true,
             'vote' => 2,
             'distance_to_center' => 50
