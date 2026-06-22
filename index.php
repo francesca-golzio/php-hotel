@@ -71,11 +71,11 @@ require './hotels.php';
   <main>
 
     <!-- Filtering Form -->
-     <div class="container form_container">
-      <form action="./hotels+parking.php" method="GET">
+    <div class="container form_container">
+      <form action="./filtered-hotels.php" method="GET">
       
-        <input type="checkbox" name="parking">
-        <label for="parking">parking</label>
+        <input type="checkbox" name="parcheggio" value="true">
+        <label for="parcheggio">parking</label>
 
         <button type="submit">
           FILTRA
@@ -112,7 +112,7 @@ require './hotels.php';
                 // IF $key is NAME
                 if ($key == "name") {
                   echo "<td class='fw-bold'>$value</td>";
-                // IF $key is PARKING
+                // IF $key is DESCRIPTION
                 } elseif ($key == "description") {
                   echo "<td class='fst-italic text-truncate'>$value</td>";
                 // IF $key is PARKING
@@ -128,7 +128,7 @@ require './hotels.php';
                 } elseif ($key == "vote") {
                   echo "<td>";
                   for($s = $value; $s > 0; $s--) {
-                    echo "<i class='bi bi-star'> </>";
+                    echo "<i class='bi bi-star'> </i>";
                   }
                   echo "</td>";
                 // IF $key is DISTANCE_TO_CENTER
