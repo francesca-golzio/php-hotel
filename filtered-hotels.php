@@ -2,11 +2,10 @@
 
 // Store variables
 require './hotels.php';
-$filteredHotels = [];
+$filteredHotels;
+$isHotelEligible = true; /* will be set to false if the hotel is not eligible */
 $parcheggio = isset($_GET['parcheggio']);
-$hotelHasParking = [];
 $voto = (!empty($_GET['voto'])) ? $_GET['voto'] : 0;
-$hotelHasThisVote = [];
 
 ?>
 
@@ -63,24 +62,19 @@ $hotelHasThisVote = [];
       // Get filtered hotels
       foreach ($hotels as $hotel) {     
 
+        // Reset variable
+        $isHotelEligible = true;
+        
         // 🅿️ Handle parking filter
-        // IF parking is checked
-        if ($parcheggio) {
-          // update the `$hotelHasParking` array
-          $hotel['parking'] == true ? $hotelHasParking[] = $hotel : null;            
-        }
+        if ($parcheggio && $hotel['parking'] == false) $isHotelEligible = false;
 
         // ⭐ Handle vote filter
-        // check if a vote is selected
-        if ($voto != 0) {
-          // IF vote selected is equal or bigger than the selected vote          
-          $hotel['vote'] >= $voto ? $hotelHasThisVote[] = $hotel : null;
-        }
+        if ($voto != 0 && $hotel['vote'] < $voto) $isHotelEligible = false;
        
+        // Save the hotel IF it matches the selected filters
+        if ($isHotelEligible) $filteredHotels[] = $hotel;        
       }
-      // Apply all selected filters
-      $filteredHotels = $hotelHasParking;
-      $filteredHotels = $hotelHasThisVote;
+
           
     // Apply rendering rules
     // Cycle inside the '$filteredHotels' array
