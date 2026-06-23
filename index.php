@@ -84,10 +84,10 @@ require './hotels.php';
           <thead>
             <tr class="text-uppercase">
               <th scope="col">Hotel</th>
-              <th scope="col">Description</th>
-              <th scope="col">Parking</th>
-              <th scope="col">Vote</th>
-              <th scope="col">Distance to Center</th>
+              <th scope="col">Descrizione</th>
+              <th scope="col">Parcheggio</th>
+              <th scope="col">Valutazione</th>
+              <th scope="col">Distanza dal Centro</th>
             </tr>
           </thead>
 
@@ -111,7 +111,7 @@ require './hotels.php';
                 } elseif ($key == "parking") {
                   if ($value == true) {
                     // if 'true' print
-                    echo "<td><i class='bi bi-check2-circle'></i> yes</td>";
+                    echo "<td><i class='bi bi-check2-circle'></i> sì</td>";
                     } else {
                       // ELSE (if 'false') print
                       echo "<td><i class='bi bi-x-circle'></i> no</td>";
