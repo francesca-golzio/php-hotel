@@ -62,19 +62,14 @@ require './hotels.php';
 
 <body>
   
-  <header>
-    <div class="header_container">
-      <h1>🏨 PHP Hotel</h1>
-      
-    </div>
-  </header>
+  <!-- Header -->
+  <?php require './src/components/header.php'; ?>
+
   
   <main>
 
     <!-- Filtering Form -->
-    <?php
-      require './searchbar.php';
-    ?>
+    <?php require './src/components/searchbar.php'; ?>
     
     <!-- Hotels table -->
     <div class="container table_container">

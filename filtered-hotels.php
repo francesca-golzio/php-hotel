@@ -25,17 +25,14 @@ $voto = isset($_GET['voto']) ? (int) $_GET['voto'] : 0;
   <!-- ⚠️ MANY BLOCKS 👇 COPY-PASTED from `index.php`
    should be componentized (header, form, table-like esxternal structure, rendering rules...) -->
 
-    <header>
-    <div class="header_container">
-      <h1>🏨 PHP Hotel</h1>      
-    </div>
-  </header>
+  <!-- Header -->
+  <?php require './src/components/header.php'; ?>
   
   <main>
 
     <!-- Filtering Form -->
     <?php
-      require './searchbar.php';
+      require './src/components/searchbar.php';
     ?>
     
     <!-- Hotels table -->
