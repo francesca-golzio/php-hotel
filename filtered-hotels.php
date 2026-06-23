@@ -2,8 +2,11 @@
 
 // Store variables
 require './hotels.php';
+$filteredHotels = [];
 $parcheggio = isset($_GET['parcheggio']);
-$hotelsWithParking = [];
+$hotelHasParking = [];
+$voto = (!empty($_GET['voto'])) ? $_GET['voto'] : 0;
+$hotelHasThisVote = [];
 
 ?>
 
@@ -57,20 +60,32 @@ $hotelsWithParking = [];
   
     <?php
     
-    // Cycle inside the hotels array 
-    // for each hotel of the hotels list
-    foreach ($hotels as $hotel) {      
-        // 🅿️ IF parking is checked
+      // Get filtered hotels
+      foreach ($hotels as $hotel) {     
+
+        // 🅿️ Handle parking filter
+        // IF parking is checked
         if ($parcheggio) {
-          // update the `$hotelsWithParking` array
-          $hotel['parking'] == true ? $hotelsWithParking[] = $hotel : null;            
-        }  
-    }
+          // update the `$hotelHasParking` array
+          $hotel['parking'] == true ? $hotelHasParking[] = $hotel : null;            
+        }
+
+        // ⭐ Handle vote filter
+        // check if a vote is selected
+        if ($voto != 0) {
+          // IF vote selected is equal or bigger than the selected vote          
+          $hotel['vote'] >= $voto ? $hotelHasThisVote[] = $hotel : null;
+        }
+       
+      }
+      // Apply all selected filters
+      $filteredHotels = $hotelHasParking;
+      $filteredHotels = $hotelHasThisVote;
           
     // Apply rendering rules
-    // Cycle inside the '$hotelsWithParking' array
-      // for each hotel of the hotels list
-      foreach ($hotelsWithParking as $hotel) {
+    // Cycle inside the '$filteredHotels' array
+      // for each hotel of the filtered hotels list
+      foreach ($filteredHotels as $hotel) {
         // open table row
         echo "<tr>";
         // get every key-value pair
