@@ -1,11 +1,11 @@
 <?php
 
-// Store variables
+// Get variables
 require './hotels.php';
-$filteredHotels;
+$filteredHotels = [];
 $isHotelEligible = true; /* will be set to false if the hotel is not eligible */
 $parcheggio = isset($_GET['parcheggio']);
-$voto = (!empty($_GET['voto'])) ? $_GET['voto'] : 0;
+$voto = isset($_GET['voto']) ? (int) $_GET['voto'] : 0;
 
 ?>
 
@@ -69,55 +69,63 @@ $voto = (!empty($_GET['voto'])) ? $_GET['voto'] : 0;
         if ($parcheggio && $hotel['parking'] == false) $isHotelEligible = false;
 
         // ⭐ Handle vote filter
-        if ($voto != 0 && $hotel['vote'] < $voto) $isHotelEligible = false;
+        if ($voto > 0 && $hotel['vote'] < $voto) $isHotelEligible = false;
        
         // Save the hotel IF it matches the selected filters
-        if ($isHotelEligible) $filteredHotels[] = $hotel;        
-      }
-
-          
-    // Apply rendering rules
-    // Cycle inside the '$filteredHotels' array
-      // for each hotel of the filtered hotels list
-      foreach ($filteredHotels as $hotel) {
-        // open table row
-        echo "<tr>";
-        // get every key-value pair
-        foreach ($hotel as $key => $value) {
-          // print data inside cell (repeat for each $key)
-          // IF $key is NAME
-          if ($key == "name") {
-            echo "<td class='fw-bold'>$value</td>";
-          // IF $key is DESCRIPTION
-          } elseif ($key == "description") {
-            echo "<td class='fst-italic text-truncate'>$value</td>";
-          // IF $key is PARKING
-          } elseif ($key == "parking") {
-            if ($value == true) {
-              // if 'true' print
-              echo "<td><i class='bi bi-check2-circle'></i> yes</td>";
-              } else {
-                // ELSE (if 'false') print
-                echo "<td><i class='bi bi-x-circle'></i> no</td>";
-              }
-          // IF $key is VOTE
-          } elseif ($key == "vote") {
-            echo "<td>";
-            for($s = $value; $s > 0; $s--) {
-              echo "<i class='bi bi-star'> </i>";
-            }
-            echo "</td>";
-          // IF $key is DISTANCE_TO_CENTER
-          } elseif ($key == "distance_to_center") {
-            echo "<td>$value km</td>";
-          // every OTHER case
-          } else {
-            // ELSE
-            echo "<td>$value</td>";
-          }
+        if ($isHotelEligible) $filteredHotels[] = $hotel;
         }
-        // close table row
-        echo "</tr>";
+        
+      // IF no results
+      if (empty($filteredHotels)) echo 
+      "<tr>
+        <td colspan='5'>
+          <h5 class='text-center'>No results</h5>
+        </td>
+      </tr>";
+      // ELSE apply rendering rules
+      else {
+        // Cycle inside the '$filteredHotels' array
+        // for each hotel of the filtered hotels list
+        foreach ($filteredHotels as $hotel) {
+          // open table row
+          echo "<tr>";
+          // get every key-value pair
+          foreach ($hotel as $key => $value) {
+            // print data inside cell (repeat for each $key)
+            // IF $key is NAME
+            if ($key == "name") {
+              echo "<td class='fw-bold'>$value</td>";
+            // IF $key is DESCRIPTION
+            } elseif ($key == "description") {
+              echo "<td class='fst-italic text-truncate'>$value</td>";
+            // IF $key is PARKING
+            } elseif ($key == "parking") {
+              if ($value == true) {
+                // if 'true' print
+                echo "<td><i class='bi bi-check2-circle'></i> yes</td>";
+                } else {
+                  // ELSE (if 'false') print
+                  echo "<td><i class='bi bi-x-circle'></i> no</td>";
+                }
+            // IF $key is VOTE
+            } elseif ($key == "vote") {
+              echo "<td>";
+              for($s = $value; $s > 0; $s--) {
+                echo "<i class='bi bi-star'> </i>";
+              }
+              echo "</td>";
+            // IF $key is DISTANCE_TO_CENTER
+            } elseif ($key == "distance_to_center") {
+              echo "<td>$value km</td>";
+            // every OTHER case
+            } else {
+              // ELSE
+              echo "<td>$value</td>";
+            }
+          }
+          // close table row
+          echo "</tr>";
+        }
       }
 
     ?>
