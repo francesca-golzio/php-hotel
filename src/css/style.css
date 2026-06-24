@@ -1,3 +1,10 @@
+/* CSS reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* Import Google Fonts */
 @font-face {
   font-family: 'Victor Mono Variable';
@@ -11,6 +18,7 @@
 
 /* Commons */
 body {
+  width: 100%;
   font-family: 'Victor Mono Variable', monospace;
   font-size: 16px;
   background-image: url('../img/hf-sea.svg');
@@ -30,6 +38,10 @@ header {
 
 /* Main */
 
+main {
+  padding: 0 1rem;
+}
+
 /* Filtering Form */
 
 .form_container {
@@ -43,14 +55,26 @@ header {
 }
 
 
-/* Table */
+/* Hotels List */
 
-.table_container {
+div.container {
   max-width: 1048px;
-  padding: 0.8rem;
+  justify-content: center;
   margin: 0 auto;
+  padding-top: 1rem;
+
+  div.row {
+    padding: 0.5rem;
+  }
 }
 
-table {
-  opacity: 0.95;
+div.hotels_table>div.row:nth-child(odd) {
+  background-color: #afe0f9;
 }
+
+div.hotels_table>div.row:nth-child(even) {
+  background-color: #bfe9fe;
+}
+
+
+/* opacity: 0.95; */

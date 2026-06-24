@@ -72,72 +72,55 @@ require './hotels.php';
     <?php require './src/components/searchbar.php'; ?>
     
     <!-- Hotels table -->
-    <div class="container table_container">
-      <div class="table-responsive ">
-        <table class="table table-info table-striped">
-
-          <thead>
-            <tr class="text-uppercase">
-              <th scope="col">Hotel</th>
-              <th scope="col">Descrizione</th>
-              <th scope="col">Parcheggio</th>
-              <th scope="col">Valutazione</th>
-              <th scope="col">Distanza dal Centro</th>
-            </tr>
-          </thead>
-
-          <tbody>
-          <?php
-          // Cycle inside the hotels array
-            // for each hotel of the hotels list
-            foreach ($hotels as $hotel) {
-              // open table row
-              echo "<tr>";
-              // get every key-value pair
-              foreach ($hotel as $key => $value) {
-                // print data inside cell (repeat for each $key)
-                // IF $key is NAME
-                if ($key == "name") {
-                  echo "<td class='fw-bold'>$value</td>";
+      <div class="container hotels_table">        
+        <!-- initial row -->
+        <div class='row text-uppercase fw-bold fst-italic'>
+          <div class='col-7 col-sm-5 col-md-3 col-lg-2'>Hotel</div>
+          <div class='col d-none col-md-4 d-md-block col-lg-3'>Descrizione</div>
+          <div class='col d-none col-sm-3 d-sm-block col-md-2'>Parcheggio</div>
+          <div class='col-4 col-md-3 col-lg-2'>Valutazione</div>
+          <div class='col d-none d-lg-block'>Distanza dal Centro</div>
+        </div>
+        <?php
+          // Render hotels list inside rows
+          foreach ($hotels as $hotel) {
+            // open row
+            echo "<div class='row'>";
+            // get every key-value pair
+            foreach ($hotel as $key => $value) {
+              // print data
+              // IF $key is NAME
+              if ($key == "name") {
+                echo "<div class='col-7 col-sm-5 col-md-3 col-lg-2' id='name'><h5 class='card-title'>$value</h5></div>";
                 // IF $key is DESCRIPTION
-                } elseif ($key == "description") {
-                  echo "<td class='fst-italic text-truncate'>$value</td>";
-                // IF $key is PARKING
-                } elseif ($key == "parking") {
-                  if ($value == true) {
-                    // if 'true' print
-                    echo "<td><i class='bi bi-check2-circle'></i> sì</td>";
-                    } else {
-                      // ELSE (if 'false') print
-                      echo "<td><i class='bi bi-x-circle'></i> no</td>";
-                    }
-                // IF $key is VOTE
-                } elseif ($key == "vote") {
-                  echo "<td>";
-                  for($s = $value; $s > 0; $s--) {
-                    echo "<i class='bi bi-star'> </i>";
+              } elseif ($key == "description") {
+                echo "<div class='col d-none col-md-4 d-md-block col-lg-3' id='description'><p class='card-text'>$value</p></div>";
+              // IF $key is PARKING
+              } elseif ($key == "parking") {
+                if ($value == true) {
+                  // if 'true' print
+                  echo "<div class='col d-none col-sm-3 d-sm-block col-md-2 text-uppercase' id='parking'><i class='bi bi-check-circle'></i> sì</div>";
+                  } else {
+                    // ELSE (if 'false') print
+                    echo "<div class='col d-none col-sm-3 d-sm-block col-md-2 text-uppercase' id='parking'><i class='bi bi-x-circle'></i> no</div>";
                   }
-                  echo "</td>";
-                // IF $key is DISTANCE_TO_CENTER
-                } elseif ($key == "distance_to_center") {
-                  echo "<td>$value km</td>";
-                // every OTHER case
-                } else {
-                  // ELSE
-                  echo "<td>$value</td>";
+              // IF $key is VOTE
+              } elseif ($key == "vote") {
+                echo "<div class='col-4 col-md-3 col-lg-2' id='vote'>";
+                for($s = $value; $s > 0; $s--) {
+                  echo "<i class='bi bi-star'></i>";
                 }
-              }
-              // close table row
-              echo "</tr>";
+                echo "</div>";
+              // IF $key is DISTANCE_TO_CENTER
+              } elseif ($key == "distance_to_center") {
+                echo "<div class='col d-none d-lg-block' id='distance_to_center'>$value km dal centro</div>";
+              } 
             }
-
-
-          ?>        
-          </tbody>
-
-        </table>
+            // close row
+            echo "</div>";
+          }
+        ?>
       </div>
-    </div>
     
     <!-- Import Bootstrap -->
     <script 
