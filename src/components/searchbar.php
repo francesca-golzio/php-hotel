@@ -11,25 +11,25 @@ $voto = isset($_GET['voto']) ? (int) $_GET['voto'] : 0;
 <div class="container form_container">
   <form action="./filtered-hotels.php" method="GET">
 
-    <div class="d-flex gap-5 align-items-end">
+    <div class="inputs_container">
 
       <!-- 🅿️ Has parking -->
-      <div>
+      <div class="parking_search_container">
         <input 
           type="checkbox" 
           name="parcheggio" 
           id="parcheggio" 
           value="true"
           <?php if ($parcheggio) echo "checked"; ?> >
-        <label for="parcheggio">parcheggio</label>
+        <label for="parcheggio" class="text-uppercase"> parcheggio</label>
       </div>
     
       <!-- ⭐ Has at least X stars -->
-      <div class="d-flex">
-        <label for="voto">valutazione degli utenti</label>
-        <select class="form-select" name="voto" id="voto">
+      <div class="text-center" id="vote_search_container">
+        <label for="voto" class="text-uppercase">valutazione degli utenti</label>
+        <select class="form-custom" name="voto" id="voto">
           <option 
-            value="0"
+            value="0"s
             <?php if ($voto === 0) echo "selected" ?> >
             -- nessun filtro --
           </option>
@@ -51,9 +51,9 @@ $voto = isset($_GET['voto']) ? (int) $_GET['voto'] : 0;
         </select>
       </div>
       
-      <div>
-        <button type="submit">
-          FILTRA
+      <div class="submit_button_container">
+        <button type="submit" class="text-uppercase">
+          filtra
         </button>
       </div>
 

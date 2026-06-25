@@ -17,22 +17,40 @@
 
 
 /* Commons */
+
+:root {
+  --dark-color: #15274e;
+  --dark-color-opacity: #15274ee2;
+  --light-color: #ceeffe;
+  --light-color-opacity: #ceeffee2;
+  --accent-color: #2cc1d7;
+  --accent-color-opacity: #2cc1d7e2;
+  --accent-color-light: #6ee3f5;
+  --accent-color-light-opacity: #6ee3f5e2;
+}
+
+input {
+  accent-color: var(--accent-color);
+}
+
 body {
   width: 100%;
   font-family: 'Victor Mono Variable', monospace;
   font-size: 16px;
   background-image: url('../img/hf-sea.svg');
   background-size: cover;
+  background-position: center 0% top 0%;
+  transition: all 0.3s ease;
 }
 
 
 /* Header */
 header {
-  background-color: #15274e;
-  color: #c9eefb;
+  background-color: var(--dark-color-opacity);
+  backdrop-filter: blur(5px);
+  color: var(--light-color);
   padding: 20px 25px;
   margin-bottom: 30px;
-  opacity: 0.95;
 }
 
 
@@ -40,18 +58,147 @@ header {
 
 main {
   padding: 0 1rem;
+  color: var(--dark-color);
 }
 
 /* Filtering Form */
 
 .form_container {
-  color: #c9eefb;
-  background-color: #15274e;
-  opacity: 0.95;
+  display: flex;
   padding: 1rem;
-  border-radius: 30px;
+  border-radius: 1rem;
   margin: 0 auto;
+  justify-content: center;
 
+
+  .inputs_container {
+    display: flex;
+
+
+    .parking_search_container {
+      color: var(--light-color);
+      background-color: var(--dark-color-opacity);
+      backdrop-filter: blur(5px);
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 0.5rem;
+      border: 2px outset var(--dark-color);
+      border-radius: 0.375rem;
+      padding: .25rem .75rem;
+
+      #parcheggio {
+        cursor: pointer;
+      }
+
+      #parcheggio:not(:checked) {
+        display: none;
+      }
+
+    }
+
+    #vote_search_container {
+      color: var(--light-color);
+      background-color: var(--dark-color-opacity);
+      backdrop-filter: blur(5px);
+      border: 2px outset var(--dark-color);
+      border-radius: 0.45rem;
+      padding: .35rem .75rem .5rem .75rem;
+
+      label {
+        padding-bottom: 0.35rem;
+      }
+    }
+
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      border: 1px solid var(--dark-color);
+      height: 2rem;
+      cursor: pointer;
+    }
+
+    .form-custom {
+      padding: .25rem 2.25rem .25rem .75rem;
+      background-color: var(--light-color);
+      background-image: url('../img/chevron-compact-down.svg');
+      background-repeat: no-repeat;
+      background-position: right .75rem center;
+      display: block;
+      border-radius: 0.375rem;
+      outline: none;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+    }
+
+    select:focus,
+    select:hover {
+      font-weight: bold;
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 0.25rem var(--accent-color-opacity);
+    }
+
+    button[type="submit"] {
+      color: var(--light-color);
+      background-color: var(--dark-color-opacity);
+      backdrop-filter: blur(5px);
+      border-color: var(--dark-color);
+      border-radius: 0.375rem;
+      padding: .25rem .75rem;
+      cursor: pointer;
+    }
+
+    button:hover,
+    div.parking_search_container:hover {
+      background-color: var(--accent-color);
+      color: var(--dark-color);
+      font-weight: bold;
+    }
+  }
+
+}
+
+@media screen and (max-width: 576px) {
+  .inputs_container {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+
+    .vote_search_container {
+      order: 0;
+    }
+
+    .parking_search_container {
+      order: 1;
+    }
+
+    .submit_button_container {
+      order: 2;
+    }
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .inputs_container {
+    flex-wrap: nowrap;
+    gap: 3rem;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .inputs_container {
+    gap: 4rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .inputs_container {
+    gap: 5rem;
+  }
 }
 
 
@@ -65,16 +212,23 @@ div.container {
 
   div.row {
     padding: 0.5rem;
+    backdrop-filter: blur(5px);
+
   }
 }
 
+div.hotels_table>div.row:first-child {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
 div.hotels_table>div.row:nth-child(odd) {
-  background-color: #afe0f9;
+  background-color: var(--accent-color-light-opacity);
 }
 
 div.hotels_table>div.row:nth-child(even) {
-  background-color: #bfe9fe;
+  background-color: var(--light-color-opacity);
 }
 
-
-/* opacity: 0.95; */
+div.hotels_table>div.row:last-child {
+  border-radius: 0 0 0.5rem 0.5rem;
+}
