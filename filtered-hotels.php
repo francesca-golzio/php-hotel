@@ -29,12 +29,9 @@ $voto = isset($_GET['voto']) ? (int) $_GET['voto'] : 0;
   <body>
 
     <!-- #region 🫅 Header -->
-
       <?php require './src/components/AppHeader.php'; ?>
-
-    <!-- #endregion -->
-    
-    <!-- #region Main -->
+    <!-- #endregion Header -->
+   
     <main>
 
       <!-- 🪮 Filtering Form -->
@@ -90,8 +87,11 @@ $voto = isset($_GET['voto']) ? (int) $_GET['voto'] : 0;
       </div>
       <!-- #endregion 🏨 Hotels table -->
 
+      <!-- #region 👣 Footer -->
+      <?php require './src/components/AppFooter.php'; ?>
+      <!-- #endregion Footer -->
+    
     </main>
-    <!-- #endregion Main -->
 
   </body>
 

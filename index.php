@@ -24,12 +24,9 @@
 
   <body>
     
-    <!-- #region 🫅 Header -->
-
-      <?php require './src/components/AppHeader.php'; ?>
-
-    <!-- #endregion -->
-
+    <!-- #region🫅 Header -->
+    <?php require './src/components/AppHeader.php'; ?>
+    <!-- #endregion Header -->
     
     <main>
 
@@ -69,6 +66,9 @@
      
     </main>
 
+    <!-- #region 👣 Footer -->
+    <?php require './src/components/AppFooter.php'; ?>
+    <!-- #endregion Footer -->
     
   </body>
 
