@@ -86,12 +86,12 @@ $voto = isset($_GET['voto']) ? (int) $_GET['voto'] : 0;
 
       </div>
       <!-- #endregion 🏨 Hotels table -->
-
-      <!-- #region 👣 Footer -->
-      <?php require './src/components/AppFooter.php'; ?>
-      <!-- #endregion Footer -->
-    
+      
     </main>
+    
+    <!-- #region 👣 Footer -->
+    <?php require './src/components/AppFooter.php'; ?>
+    <!-- #endregion Footer -->
 
   </body>
 
