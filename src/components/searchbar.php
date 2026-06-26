@@ -1,3 +1,5 @@
+<!-- 🪮 Searchbar component -->
+
 <?php
 
 // Get variables
@@ -6,11 +8,9 @@ $voto = isset($_GET['voto']) ? (int) $_GET['voto'] : 0;
 
 ?>
 
-<!-- ⚠️UI da sistemare!!! -->
-<!-- Filtering Form -->
+<!-- 🪮 Filtering Form -->
 <div class="container form_container">
   <form action="./filtered-hotels.php" method="GET">
-
     <div class="inputs_container">
 
       <!-- 🅿️ Has parking -->
@@ -21,13 +21,24 @@ $voto = isset($_GET['voto']) ? (int) $_GET['voto'] : 0;
           id="parcheggio" 
           value="true"
           <?php if ($parcheggio) echo "checked"; ?> >
-        <label for="parcheggio" class="text-uppercase"> parcheggio</label>
+        <label 
+          for="parcheggio" 
+          class="text-uppercase"> 
+            parcheggio
+         </label>
       </div>
     
       <!-- ⭐ Has at least X stars -->
       <div class="text-center" id="vote_search_container">
-        <label for="voto" class="text-uppercase">valutazione degli utenti</label>
-        <select class="form-custom" name="voto" id="voto">
+        <label 
+          for="voto" 
+          class="text-uppercase">
+            valutazione degli utenti
+        </label>
+        <select 
+          class="form-custom" 
+          name="voto" 
+          id="voto">
           <option 
             value="0"s
             <?php if ($voto === 0) echo "selected" ?> >
@@ -51,6 +62,7 @@ $voto = isset($_GET['voto']) ? (int) $_GET['voto'] : 0;
         </select>
       </div>
       
+      <!-- 📤 Submit and apply filters -->
       <div class="submit_button_container">
         <button type="submit" class="text-uppercase">
           filtra
@@ -58,6 +70,5 @@ $voto = isset($_GET['voto']) ? (int) $_GET['voto'] : 0;
       </div>
 
     </div>
-
   </form>
 </div>
