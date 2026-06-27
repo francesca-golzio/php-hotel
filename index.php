@@ -60,8 +60,8 @@
   
   <main>
 
-    <div class="table-responsive">
-      <table class="table table-primary">
+    <div class="container-fluid">
+      <table class="table">
         <thead>
           <tr>
             <th scope="col">Hotel</th>
@@ -77,18 +77,16 @@
         // Cycle inside the hotels array
           // for each hotel of the hotels list
           foreach ($hotels as $hotel) {
-            // open table row
-            echo "<tr>";
-            // get every key-value pair
-            foreach ($hotel as $key => $value) {
-              // print data inside cell (repeat for each $key)
+        ?>
+        <tr>
+          <?php 
+            foreach($hotel as $key => $value){
               echo "<td>$value</td>";
             }
-            // close table row
-            echo "</tr>";
+          ?>
+        </tr>
+        <?php
           }
-
-
         ?>
         
         </tbody>
