@@ -1,6 +1,7 @@
 # 🏨 PHP Hotel
 
-repo: `php-hotel`
+repo: `php-hotel`<br>
+branch: `main`
 
 ## 📚 Assignment 
 
