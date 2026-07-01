@@ -1,5 +1,5 @@
 <?php
-  // Store variables
+  // Variables
 
   $hotels = [
 
@@ -43,8 +43,31 @@
 
   // set the parking_requested variable to the default value
   $parking_requested = false;
+  
+  // set the minimum_vote variable to the default value
+  $minimum_vote = 0;
 
-    
+
+  // Update variables if filters are set
+
+  // 🅿️ Handle parking filter
+  // check IF the parking is requested 
+  if (isset($_GET['parking']) && $_GET['parking'] == 'on') {
+
+    // IF so, update the parking_requested variable
+    $parking_requested = true;
+  }
+
+  // ⭐ Handle vote filter
+  // check IF the minimum vote is requested and a number between 1 and 5
+  if (isset($_GET['minimum_vote']) && is_numeric($_GET['minimum_vote']) && $_GET['minimum_vote'] > 0 && $_GET['minimum_vote'] <= 5) {
+
+    // IF so, update the minimum_vote variable
+    // make sure the value returned is an integer
+    $minimum_vote = (int)$_GET['minimum_vote'];
+  }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -73,6 +96,11 @@
           <label for="parking">Parcheggio</label>
         </div>
 
+        <div class="form-control">
+          <input type="number" name="minimum_vote" id="minimum_vote" min="1" max="5">
+          <label for="minimum_vote">Voto minimo</label>
+        </div>
+
         <button type="submit">FILTRA</button>
 
       </form>
@@ -98,21 +126,22 @@
             foreach ($hotels as $hotel) {
 
               // 🅿️ Handle parking filter
-              // check IF the parking is requested 
-              if (isset($_GET['parking']) && $_GET['parking'] == 'on') {
-
-                // IF so, update the parking_requested variable
-                $parking_requested = true;
-              }
-              // IF parking_requested (is true) 
               if ($parking_requested) {
+                
                 // BUT the hotel doesn't have it, THEN skip current hotel
                 if (!$hotel['parking']) {
                   continue;
                 }
               }
 
+              // ⭐ Handle vote filter
+              // IF the hotel's vote doesn't reach the minimum_vote, THEN skip current hotel
+              if ($hotel['vote'] < $minimum_vote) {
+                continue;
+              }             
           ?>
+
+          <!-- Render hotel's data -->
           <tr>
             <td><?php echo $hotel['name'] ?></td>
             <td><?php echo $hotel['description'] ?></td>
@@ -120,7 +149,9 @@
             <td><?php echo $hotel['vote'] ?></td>
             <td><?php echo $hotel['distance_to_center'] ?></td>
           </tr>
+
           <?php
+            // End foreach
             }
           ?>        
         </tbody>
